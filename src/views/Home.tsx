@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useRef } from 'react'
 
 import { styled } from '@mui/material/styles'
 import Table from '@mui/material/Table'
@@ -16,6 +16,7 @@ import ButtonGroup from '@mui/material/ButtonGroup'
 import DeleteOutlineOutlinedIcon from '@mui/icons-material/DeleteOutlineOutlined'
 import EditOutlinedIcon from '@mui/icons-material/EditOutlined'
 import { useNavigate } from 'react-router-dom'
+import Dialog from '../components/dialog/Dialog'
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
 	[`&.${tableCellClasses.head}`]: {
@@ -64,6 +65,20 @@ interface State {
 }
 
 const Home = () => {
+	// ** Dialog
+	const index = useRef(0)
+	const [dialog, setDialog] = useState({
+		message: '',
+		isLoading: false
+	})
+
+	const handleDialog = (message: string, isLoading: boolean) => {
+		setDialog({
+			message,
+			isLoading
+		})
+	}
+
 	// ** Navigate
 	const navigate = useNavigate()
 	// ** Dispatch Actions
@@ -75,9 +90,17 @@ const Home = () => {
 
 	// ** Delete Ticket
 	const handleDelete = (id: number) => {
-		if (window.confirm('Are you sure to delete this ticket ?')) {
-			deleteTicket(id)
+		handleDialog('Are you sure you want to delete?', true)
+		index.current = id
+	}
+
+	const areUSureDelete = (choose: boolean) => {
+		if (choose) {
+			deleteTicket(index.current)
 			getTickets()
+			handleDialog('', false)
+		} else {
+			handleDialog('', false)
 		}
 	}
 
@@ -123,7 +146,8 @@ const Home = () => {
 							</TableRow>
 						</TableHead>
 						<TableBody>
-							{tickets && tickets.length > 0 &&
+							{tickets &&
+								tickets.length > 0 &&
 								tickets.map((ele) => (
 									<StyledTableRow key={ele.id}>
 										<StyledTableCell component="th" scope="row">
@@ -166,6 +190,9 @@ const Home = () => {
 						</TableBody>
 					</Table>
 				</TableContainer>
+				{dialog.isLoading && (
+					<Dialog onDialog={areUSureDelete} message={dialog.message} />
+				)}
 			</div>
 		)
 }

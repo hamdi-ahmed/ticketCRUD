@@ -85,12 +85,17 @@ export const getSingleTicket = (id: number | string) => {
 }
 
 
-export const updateTicketServer = (data: any, id: number | string) => {
+export const updateTicketServer = (obj: any, id: number | string) => {
     return async (dispatch: Dispatch<Action>) => {
-        await axios.put(`http://localhost:5000/tickets/${id}`, data).then(res => {
+        await axios.put(`http://localhost:5000/tickets/${id}`, obj).then(res => {
             dispatch({
                 type: ActionTypes.UPDATE_TICKET_SERVER
             })
+        })
+        const { data } = await axios.get(`http://localhost:5000/tickets`)
+        dispatch({
+            type: ActionTypes.GET_TICkETS,
+            payload: data
         })
     }
 }
