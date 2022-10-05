@@ -1,0 +1,28 @@
+{
+  "tickets": [
+    {
+      "name": "last Ticket",
+      "price": "105",
+      "startDate": "2022-09-27",
+      "endDate": "2022-10-27",
+      "Description": "Test",
+      "id": 8
+    },
+    {
+      "name": "Important Ticket One",
+      "price": "500",
+      "startDate": "2022-10-25",
+      "endDate": "2022-10-25",
+      "Description": "Very Important",
+      "id": 10
+    },
+    {
+      "name": "AAA",
+      "price": "1000",
+      "startDate": "2022-10-04",
+      "endDate": "2022-10-26",
+      "Description": "Any ",
+      "id": 11
+    }
+  ]
+}
