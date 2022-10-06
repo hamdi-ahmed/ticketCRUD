@@ -127,7 +127,7 @@ const Home = () => {
 				<div>
 					<Button
 						onClick={() => navigate('/buyTicket')}
-						style={{ marginBottom: '10px' }}
+						style={{ marginBottom: '10px', marginLeft: '10px' }}
 						variant="contained"
 					>
 						Add Ticket
@@ -138,7 +138,7 @@ const Home = () => {
 						<TableHead>
 							<TableRow>
 								<StyledTableCell>Name</StyledTableCell>
-								<StyledTableCell align="center">Prices $</StyledTableCell>
+								<StyledTableCell align="center">Prices</StyledTableCell>
 								<StyledTableCell align="center">Start Date</StyledTableCell>
 								<StyledTableCell align="center">End Date</StyledTableCell>
 								<StyledTableCell align="center">Description</StyledTableCell>
@@ -154,7 +154,7 @@ const Home = () => {
 											{ele.name}
 										</StyledTableCell>
 										<StyledTableCell align="center">
-											{ele.price}
+											{ele.price}$
 										</StyledTableCell>
 										<StyledTableCell align="center">
 											{ele.startDate}
@@ -173,12 +173,13 @@ const Home = () => {
 												<Button
 													onClick={() => navigate(`editTicket/${ele.id}`)}
 													style={{ marginRight: '10px' }}
+													variant="outlined"
 													color="primary"
 												>
 													<EditOutlinedIcon />
 												</Button>
 												<Button
-													color="secondary"
+													color="error"
 													onClick={() => handleDelete(ele.id)}
 												>
 													<DeleteOutlineOutlinedIcon />

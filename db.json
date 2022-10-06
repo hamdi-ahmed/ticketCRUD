@@ -1,20 +1,12 @@
 {
   "tickets": [
     {
-      "name": "Test",
-      "price": "100",
-      "startDate": "2022-10-04",
-      "endDate": "2022-10-26",
-      "Description": "Any description",
-      "id": 1
-    },
-    {
       "name": "Ticket One",
       "price": "200",
-      "startDate": "2022-10-26",
-      "endDate": "2022-11-04",
-      "Description": "Any Description",
-      "id": 2
+      "startDate": "2022-10-19",
+      "endDate": "2022-10-20",
+      "Description": "Any description for testing",
+      "id": 1
     }
   ]
 }

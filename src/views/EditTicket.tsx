@@ -136,7 +136,8 @@ const EditTicket = () => {
 					<br />
 					<TextField
 						id="StartDate"
-						// label="Start Date"
+						InputLabelProps={{ shrink: true }}
+						label='End Date'
 						name="startDate"
 						value={startDate}
 						type="date"
@@ -145,13 +146,15 @@ const EditTicket = () => {
 					<br />
 					<TextField
 						id="EndDate"
+						InputLabelProps={{ shrink: true }}
+						label='End Date'
 						name="endDate"
 						value={endDate}
 						type="date"
 						onChange={handleInputsChange}
 					/>
 					<br />
-					<Button type="submit" color="primary">
+					<Button type="submit" variant="contained">
 						Update Ticket
 					</Button>
 				</div>

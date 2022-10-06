@@ -4,6 +4,7 @@ import TextField from '@mui/material/TextField'
 import { Button } from '@mui/material'
 import { useActions } from '../hooks/useActions'
 import { useNavigate } from 'react-router-dom'
+
 const BuyTicket = () => {
 	// ** Router
 	const navigate = useNavigate()
@@ -19,7 +20,7 @@ const BuyTicket = () => {
 
 	// ** Destruct
 	const { name, price, startDate, endDate, Description } = dataModel
-	const { addTicket, getTickets } = useActions()
+	const { addTicket } = useActions()
 
 	const handleInputsChange = (e: React.FormEvent<EventTarget>): void => {
 		let target = e.target as HTMLInputElement
@@ -38,6 +39,15 @@ const BuyTicket = () => {
 	}
 	return (
 		<div>
+			<div>
+				<Button
+					onClick={() => navigate('/')}
+					variant="text"
+					style={{ marginLeft: '10px' }}
+				>
+					Go Back
+				</Button>
+			</div>
 			<div style={{ textAlign: 'center' }}>
 				{error && (
 					<h3
@@ -100,7 +110,8 @@ const BuyTicket = () => {
 					<br />
 					<TextField
 						id="StartDate"
-						// label="Start Date"
+						InputLabelProps={{ shrink: true }}
+						label="Start Date"
 						name="startDate"
 						value={startDate}
 						type="date"
@@ -110,12 +121,14 @@ const BuyTicket = () => {
 					<TextField
 						id="EndDate"
 						name="endDate"
+						InputLabelProps={{ shrink: true }}
+						label="End date"
 						value={endDate}
 						type="date"
 						onChange={handleInputsChange}
 					/>
 					<br />
-					<Button type="submit" color="primary">
+					<Button type="submit" variant="contained">
 						Add Ticket
 					</Button>
 				</div>
